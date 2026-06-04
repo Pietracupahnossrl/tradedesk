@@ -1305,10 +1305,13 @@ function setAI(text) { document.getElementById('ai-input').value = text; documen
 function buildSystemPrompt(portCtx, pricesCtx, monthCtx, chartCtx) {
   const chartSection = chartCtx ? `\nGRÁFICO: ${chartCtx}` : '';
   const today = new Date().toLocaleDateString('es-AR', {day:'2-digit', month:'long', year:'numeric'});
-  return `Analista financiero. Hoy: ${today}.${chartSection}
-Respondés en 400-600 tokens. Directo al punto, sin introducciones.
-Formato por activo: SÍMBOLO — COMPRAR/ESPERAR/EVITAR | Precio $X RSI X | Soporte $X Resist $X | Métrica clave | Entrada $X Stop $X Target $X R/R X:1 | Catalizador breve.
-Portfolio: ${portCtx} | Precios: ${pricesCtx} | ${monthCtx}`;
+  return `Sos un analista financiero experto. Fecha: ${today}.${chartSection}
+Analizás con técnico (RSI, EMAs, soportes, resistencias) y fundamental (P/E, FCF, MVRV, tokenomics).
+Respondés completo pero conciso. Sin introducciones ni conclusiones largas.
+Por cada activo: veredicto (COMPRAR/ESPERAR/EVITAR), técnico con valores, fundamental con métricas, entrada/stop/target.
+Portfolio del usuario: ${portCtx}
+Precios actuales: ${pricesCtx}
+${monthCtx}`;
 }
 
 // ── WEB SEARCH TOGGLE ──
